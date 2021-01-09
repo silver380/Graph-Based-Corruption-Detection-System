@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class People extends Vertex{
-//TODO: add variable
     private static final SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
     private String first_name = "";
     private String last_name = "";
@@ -28,6 +27,7 @@ public class People extends Vertex{
         catch (ParseException e){
             System.out.println("date not valid");
         }
+        this.setKey(this.ssn);
     }
 
     public String getSsn() {

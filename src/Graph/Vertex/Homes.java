@@ -1,8 +1,6 @@
 package Graph.Vertex;
 
 public class Homes extends Vertex {
-    //TODO: add variable
-
     private String ssn = "";
     private String price = "";
     private String address = "";

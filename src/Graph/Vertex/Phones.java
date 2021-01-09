@@ -1,7 +1,6 @@
 package Graph.Vertex;
 
 public class Phones extends Vertex{
-    //TODO: add variable
     private String ssn = "";
     private String number = "";
     private String operator ="";
@@ -10,6 +9,7 @@ public class Phones extends Vertex{
         this.ssn = args[0];
         this.number = args[1];
         this.operator = args[2];
+        this.setKey(this.number);
     }
 
     public String getSsn() {

@@ -1,7 +1,6 @@
 package Graph.Vertex;
 
 public class Cars extends Vertex {
-    //TODO: add variable
     private String plate = "";
     private String ssn = "";
     private String model ="";

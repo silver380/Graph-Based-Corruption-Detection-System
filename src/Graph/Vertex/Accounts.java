@@ -1,7 +1,6 @@
 package Graph.Vertex;
 
 public class Accounts extends Vertex {
-    //TODO: add variable
     private String ssn ="";
     private String bank_name = "";
     private String account_id="";
