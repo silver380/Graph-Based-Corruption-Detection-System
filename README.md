@@ -1,2 +1,3 @@
 # Secret-Garden
-99 DS projects
+99 first semester DS project
+team_name : Orca
