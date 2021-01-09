@@ -1,12 +1,15 @@
 package IO;
 import Graph.*;
+import Graph.Vertex.*;
+import Graph.Edge.*;
+
 import java.util.*;
 import javax.swing.*;
 import java.io.*;
 
 
 public class Input {
-    public static String[] filenames = {"accounts.csv", "calls.csv", "cars.csv", "homes.csv", "ownerships.csv",
+    public static final String[] filenames = {"accounts.csv", "calls.csv", "cars.csv", "homes.csv", "ownerships.csv",
             "people.csv", "phones.csv", "relationships.csv", "transactions.csv"};
 
     public static void getInput(Graph graph) {
@@ -15,7 +18,8 @@ public class Input {
 
         JFileChooser fileChooser = new JFileChooser();
         while (current != all) {
-            System.out.println("Please choose " + '"' + filenames[current] + '"' + "file");
+            System.out.println("Please choose " + '"' + filenames[current] + '"' + " file");
+
             if (fileChooser.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) {
                 System.out.println("Please choose the remaining files.(" + (all - current) + ") to go");
                 continue;
@@ -27,33 +31,52 @@ public class Input {
                 continue;
             }
 
-            ArrayList<String[]> list = new ArrayList<>();
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(file));
+                reader.readLine();
                 String row = "";
+
                 while (true) {
                     row = reader.readLine();
                     if (row == null)
                         break;
 
-                    list.add(row.split(","));
+                    String[] split = row.split(",");
+
+                    if (current == 0) {
+                        graph.addVertex(new Accounts(split));
+                    }
+                    else if (current == 1) {
+                        graph.addEdge(new Calls(split));
+                    }
+                    else if (current == 2) {
+                        graph.addVertex(new Cars(split));
+                    }
+                    else if (current == 3) {
+                        graph.addVertex(new Homes(split));
+                    }
+                    else if (current == 4) {
+                        graph.addEdge(new Ownerships(split));
+                    }
+                    else if (current == 5) {
+                        graph.addVertex(new People(split));
+                    }
+                    else if (current == 6) {
+                        graph.addVertex(new Phones(split));
+                    }
+                    else if (current == 7) {
+                        graph.addEdge(new Relationships(split));
+                    }
+                    else {
+                        graph.addEdge(new Transactions(split));
+                    }
                 }
-            } catch (IOException f) {
+            } catch (IOException e) {
                 System.out.println("CSV file is damaged.");
                 continue;
             }
 
             current++;
-
-            for (String[] t : list) {
-                for (String v : t) {
-                    System.out.println(v);
-                }
-            }
-//            TODO: add objects
-
-//            graph.addVertex(null);
-//            graph.addEdge(null);
         }
     }
 }

@@ -13,6 +13,7 @@ public class Accounts extends Vertex {
         this.iban = args[2];
         this.setKey(this.iban);
     }
+
     public String getIban() {
         return iban;
     }
@@ -40,10 +41,8 @@ public class Accounts extends Vertex {
     public String getBank_name() {
         return this.bank_name;
     }
+
     public String getAccount_id(){
         return this.account_id;
     }
-
-
-
 }
