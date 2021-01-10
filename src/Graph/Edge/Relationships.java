@@ -2,22 +2,19 @@ package Graph.Edge;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Relationships extends Edge {
-    private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private String relation = "";
 
     public Relationships(String [] args) {
         this.from = args[0];
         this.to = args[1];
         this.relation = args[2];
-        try {
-            this.date = formatter.parse(args[3]);
-        }catch (ParseException e){
-            System.out.println();
-            System.out.println("date not valid.");
-        }
+        this.date = LocalDateTime.parse(args[3],formatter);
         this.setEdgeKey(from + to);
     }
 

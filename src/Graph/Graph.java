@@ -30,6 +30,10 @@ public class Graph {
         return hashMap.size();
     }
 
+    public HashMap<String, Vertex> getHashMap() {
+        return hashMap;
+    }
+
     public ArrayList<Vertex> getVertices() {
         return new ArrayList<>(hashMap.values());
     }

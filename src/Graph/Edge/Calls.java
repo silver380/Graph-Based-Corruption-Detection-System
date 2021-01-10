@@ -2,9 +2,11 @@ package Graph.Edge;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Calls extends Edge {
-    private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
     private String call_id = "";
     private String duration = "";
 
@@ -12,11 +14,7 @@ public class Calls extends Edge {
         this.from = args[0];
         this.to = args[1];
         this.call_id = args[2];
-        try {
-            this.date = formatter.parse( args[3] );
-        }catch (ParseException e){
-            System.out.println("date not valid.");
-        }
+        this.date = LocalDateTime.parse(args[3],formatter);
         this.duration = args[4];
         this.setEdgeKey(call_id);
     }

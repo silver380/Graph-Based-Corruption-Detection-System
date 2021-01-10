@@ -2,10 +2,12 @@ package Graph.Edge;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Transactions extends Edge{
-    private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private String Transaction_id = "";
     private String amount = "";
 
@@ -13,11 +15,7 @@ public class Transactions extends Edge{
         this.from = args[0];
         this.to = args[1];
         this.Transaction_id = args[2];
-        try {
-            this.date = formatter.parse(args[3]);
-        }catch (ParseException e){
-            System.out.println("date not valid.");
-        }
+        this.date = LocalDateTime.parse(args[3],formatter);
         this.amount = args[4];
         this.setEdgeKey(Transaction_id);
     }

@@ -2,13 +2,15 @@ package Graph.Edge;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public abstract class Edge {
     public String edgeKey = "";
     public String from = "";
     public String to = "";
-    public Date date;
+    public LocalDateTime date;
 
 
     public void setEdgeKey(String edgeKey) {
