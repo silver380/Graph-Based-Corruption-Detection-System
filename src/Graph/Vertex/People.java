@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class People extends Vertex{
+    public boolean isSuspect;
     private static final SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
     private String first_name = "";
     private String last_name = "";
@@ -20,6 +21,9 @@ public class People extends Vertex{
 
     public People(String [] args)  {
 
+        // Todo: remove
+        if (Math.random() <0.5)
+            isSuspect = true;
 
         this.first_name = args[0];
         this.last_name = args[1];
