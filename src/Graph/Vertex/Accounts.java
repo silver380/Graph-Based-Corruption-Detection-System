@@ -14,7 +14,7 @@ public class Accounts extends Vertex {
         this.bank_name = args[1];
         this.account_id = args[3];
         this.iban = args[2];
-        this.setKey(this.iban);
+        this.setKey(this.account_id);
     }
 
     public String getIban() {
@@ -47,5 +47,15 @@ public class Accounts extends Vertex {
 
     public String getAccount_id(){
         return this.account_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Accounts{" +
+                "ssn='" + ssn + '\'' +
+                ", bank_name='" + bank_name + '\'' +
+                ", account_id='" + account_id + '\'' +
+                ", iban='" + iban + '\'' +
+                '}';
     }
 }

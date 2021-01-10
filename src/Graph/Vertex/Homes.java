@@ -58,4 +58,15 @@ public class Homes extends Vertex {
     public void setSize(long size) {
         this.size = size;
     }
+
+    @Override
+    public String toString() {
+        return "Homes{" +
+                "ssn='" + ssn + '\'' +
+                ", price='" + price + '\'' +
+                ", address='" + address + '\'' +
+                ", postal_code='" + postal_code + '\'' +
+                ", size=" + size +
+                '}';
+    }
 }

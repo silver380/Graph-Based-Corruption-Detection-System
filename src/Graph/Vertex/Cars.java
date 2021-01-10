@@ -45,4 +45,14 @@ public class Cars extends Vertex {
     public void setColor(String color) {
         this.color = color;
     }
+
+    @Override
+    public String toString() {
+        return "Cars{" +
+                "plate='" + plate + '\'' +
+                ", ssn='" + ssn + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }

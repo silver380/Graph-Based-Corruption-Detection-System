@@ -38,4 +38,13 @@ public class Phones extends Vertex{
     public void setOperator(String operator) {
         this.operator = operator;
     }
+
+    @Override
+    public String toString() {
+        return "Phones{" +
+                "ssn='" + ssn + '\'' +
+                ", number='" + number + '\'' +
+                ", operator='" + operator + '\'' +
+                '}';
+    }
 }

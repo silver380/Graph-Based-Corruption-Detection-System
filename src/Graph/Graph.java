@@ -33,4 +33,5 @@ public class Graph {
     public ArrayList<Vertex> getVertices() {
         return new ArrayList<>(hashMap.values());
     }
+
 }

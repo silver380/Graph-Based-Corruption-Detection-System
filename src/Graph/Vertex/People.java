@@ -76,4 +76,16 @@ public class People extends Vertex{
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
+
+    @Override
+    public String toString() {
+        return "People{" +
+                "first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", city='" + city + '\'' +
+                ", work='" + work + '\'' +
+                ", ssn='" + ssn + '\'' +
+                ", birthday=" + birthday +
+                '}';
+    }
 }
