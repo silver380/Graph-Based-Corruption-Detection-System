@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Ownerships extends Edge {
-    private static final SimpleDateFormat formatter = new SimpleDateFormat();
+    private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     private String ownerShip = "";
     private String amount = "";
 

@@ -4,8 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class Calls extends Edge {
-    //TODO: add variabales
-    private static final SimpleDateFormat formatter = new SimpleDateFormat();
+    private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     private String call_id = "";
     private String duration = "";
 
