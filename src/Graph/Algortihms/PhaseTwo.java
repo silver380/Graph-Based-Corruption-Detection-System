@@ -1,6 +1,8 @@
 package Graph.Algortihms;
 
 import Graph.Edge.Edge;
+import Graph.Edge.Ownerships;
+import Graph.Edge.Relationships;
 import Graph.Graph;
 import Graph.Vertex.Cars;
 import Graph.Vertex.Homes;
@@ -21,7 +23,7 @@ public class PhaseTwo {
             if (v instanceof People && (((People) v).getWork().equals("گمرک") || ((People) v).getWork().equals("سازمان بنادر"))) {
                 List<Edge> edges = v.edges;
                 for (Edge e : edges) {
-                    if ((hashMap.get(e.to) instanceof Cars) || (hashMap.get(e.to) instanceof Homes)) {
+                    if ((e instanceof Ownerships)) {
                         LocalDateTime today = LocalDateTime.now();
                         LocalDateTime difference = e.date.plusYears(2);
                         if(difference.isAfter(today)){
@@ -30,7 +32,7 @@ public class PhaseTwo {
                             break;
                         }
                     }
-                    else if(hashMap.get(e.to) instanceof People){
+                    else if(e instanceof Relationships){
                         List<Edge> childEdges = hashMap.get(e.to).edges;
                         boolean isSus = false;
                         for( Edge ec: childEdges){
