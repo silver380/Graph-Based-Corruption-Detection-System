@@ -14,7 +14,12 @@ public class People extends Vertex{
     private String ssn ="";
     private Date birthday;
 
+    public People(){
+
+    }
+
     public People(String [] args)  {
+
 
         this.first_name = args[0];
         this.last_name = args[1];

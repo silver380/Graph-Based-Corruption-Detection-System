@@ -6,6 +6,9 @@ public class Cars extends Vertex {
     private String model ="";
     private String color = "";
 
+    public Cars() {
+    }
+
     public Cars(String [] args) {
         this.plate = args[0];
         this.ssn = args[1];

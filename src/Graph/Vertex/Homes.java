@@ -7,6 +7,9 @@ public class Homes extends Vertex {
     private String postal_code = "";
     private long size=0;
 
+    public Homes() {
+    }
+
     public Homes(String [] args) {
         this.ssn = args[0];
         this.price = args[1];

@@ -6,6 +6,9 @@ public class Accounts extends Vertex {
     private String account_id="";
     private String iban ="";
 
+    public Accounts() {
+    }
+
     public Accounts(String [] args) {
         this.ssn = args[0];
         this.bank_name = args[1];

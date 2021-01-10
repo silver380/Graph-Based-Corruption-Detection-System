@@ -25,4 +25,12 @@ public class Graph {
 
         hashMap.get(edge.getFrom()).edges.add(edge);
     }
+
+    public int getSize() {
+        return hashMap.size();
+    }
+
+    public ArrayList<Vertex> getVertices() {
+        return new ArrayList<>(hashMap.values());
+    }
 }

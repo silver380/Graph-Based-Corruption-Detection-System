@@ -5,6 +5,9 @@ public class Phones extends Vertex{
     private String number = "";
     private String operator ="";
 
+    public Phones() {
+    }
+
     public Phones(String [] args) {
         this.ssn = args[0];
         this.number = args[1];
