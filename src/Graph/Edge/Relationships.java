@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Relationships extends Edge {
-    private static final SimpleDateFormat formatter = new SimpleDateFormat();
+    private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     private String relation = "";
 
     public Relationships(String [] args) {
@@ -15,6 +15,7 @@ public class Relationships extends Edge {
         try {
             this.date = formatter.parse(args[3]);
         }catch (ParseException e){
+            System.out.println();
             System.out.println("date not valid.");
         }
         this.setEdgeKey(from + to);

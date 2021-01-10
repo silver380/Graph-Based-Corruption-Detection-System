@@ -9,8 +9,8 @@ import java.io.*;
 
 
 public class Input {
-    public static final String[] filenames = {"accounts.csv", "calls.csv", "cars.csv", "homes.csv", "ownerships.csv",
-            "people.csv", "phones.csv", "relationships.csv", "transactions.csv"};
+    public static final String[] filenames = {"accounts.csv", "cars.csv", "homes.csv", "people.csv", "phones.csv",
+            "relationships.csv", "transactions.csv", "calls.csv", "ownerships.csv"};
 
     public static void getInput(Graph graph) {
         int current = 0;
@@ -41,34 +41,34 @@ public class Input {
                     if (row == null)
                         break;
 
-                    String[] split = row.split(",");
+                    String[] split = row.replaceAll("\"", "").split(",");
 
                     if (current == 0) {
                         graph.addVertex(new Accounts(split));
                     }
                     else if (current == 1) {
-                        graph.addEdge(new Calls(split));
-                    }
-                    else if (current == 2) {
                         graph.addVertex(new Cars(split));
                     }
-                    else if (current == 3) {
+                    else if (current == 2) {
                         graph.addVertex(new Homes(split));
                     }
-                    else if (current == 4) {
-                        graph.addEdge(new Ownerships(split));
-                    }
-                    else if (current == 5) {
+                    else if (current == 3) {
                         graph.addVertex(new People(split));
                     }
-                    else if (current == 6) {
+                    else if (current == 4) {
                         graph.addVertex(new Phones(split));
                     }
-                    else if (current == 7) {
+                    else if (current == 5) {
                         graph.addEdge(new Relationships(split));
                     }
-                    else {
+                    else if (current == 6) {
                         graph.addEdge(new Transactions(split));
+                    }
+                    else if (current == 7) {
+                        graph.addEdge(new Calls(split));
+                    }
+                    else {
+                        graph.addEdge(new Ownerships(split));
                     }
                 }
             } catch (IOException e) {
