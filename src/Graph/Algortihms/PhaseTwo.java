@@ -16,9 +16,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class PhaseTwo {
-    public ArrayList<Vertex> susFinder(Graph g){
+    public ArrayList<Vertex> susFinder(Graph graph){
         ArrayList<Vertex> sus = new ArrayList<>();
-        HashMap<String, Vertex> hashMap = g.getHashMap();
+        HashMap<String, Vertex> hashMap = graph.getHashMap();
         for(Vertex v : hashMap.values()) {
             if (v instanceof People && (((People) v).getWork().equals("گمرک") || ((People) v).getWork().equals("سازمان بنادر"))) {
                 List<Edge> edges = v.edges;
@@ -34,21 +34,16 @@ public class PhaseTwo {
                     }
                     else if(e instanceof Relationships){
                         List<Edge> childEdges = hashMap.get(e.to).edges;
-                        boolean isSus = false;
-                        for( Edge ec: childEdges){
-                            if(hashMap.get(ec.to) instanceof Cars || hashMap.get(ec.to) instanceof Homes){
+                        for( Edge ec: childEdges) {
+                            if (hashMap.get(ec.to) instanceof Cars || hashMap.get(ec.to) instanceof Homes) {
                                 LocalDateTime today = LocalDateTime.now();
                                 LocalDateTime difference = ec.date.plusYears(2);
-                                if(difference.isAfter(today)){
-                                    isSus=true;
-                                    ((People) v).isSuspect=true;
+                                if (difference.isAfter(today)) {
+                                    ((People) v).isSuspect = true;
                                     sus.add(v);
                                     break;
                                 }
                             }
-                        }
-                        if(isSus){
-                            break;
                         }
                     }
                 }
