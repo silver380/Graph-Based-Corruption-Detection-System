@@ -2,6 +2,7 @@ package Graph.Edge;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -14,7 +15,7 @@ public class Relationships extends Edge {
         this.from = args[0];
         this.to = args[1];
         this.relation = args[2];
-        this.date = LocalDateTime.parse(args[3],formatter);
+        this.date = LocalDate.parse(args[3],formatter);
         this.setEdgeKey(from + to);
     }
 

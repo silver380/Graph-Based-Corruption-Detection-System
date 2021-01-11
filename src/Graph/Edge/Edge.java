@@ -10,7 +10,7 @@ public abstract class Edge {
     public String edgeKey = "";
     public String from = "";
     public String to = "";
-    public LocalDateTime date;
+    public LocalDate date;
 
 
     public void setEdgeKey(String edgeKey) {

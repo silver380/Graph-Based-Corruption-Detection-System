@@ -9,6 +9,7 @@ import Graph.Vertex.Homes;
 import Graph.Vertex.People;
 import Graph.Vertex.Vertex;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,8 +25,8 @@ public class PhaseTwo {
                 List<Edge> edges = v.edges;
                 for (Edge e : edges) {
                     if ((e instanceof Ownerships)) {
-                        LocalDateTime today = LocalDateTime.now();
-                        LocalDateTime difference = e.date.plusYears(2);
+                        LocalDate today = LocalDate.now();
+                        LocalDate difference = e.date.plusYears(2);
                         if(difference.isAfter(today)){
                             ((People) v).isSuspect=true;
                             sus.add(v);
@@ -36,8 +37,8 @@ public class PhaseTwo {
                         List<Edge> childEdges = hashMap.get(e.to).edges;
                         for( Edge ec: childEdges) {
                             if (hashMap.get(ec.to) instanceof Cars || hashMap.get(ec.to) instanceof Homes) {
-                                LocalDateTime today = LocalDateTime.now();
-                                LocalDateTime difference = ec.date.plusYears(2);
+                                LocalDate today = LocalDate.now();
+                                LocalDate difference = ec.date.plusYears(2);
                                 if (difference.isAfter(today)) {
                                     ((People) v).isSuspect = true;
                                     sus.add(v);
