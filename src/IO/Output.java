@@ -27,7 +27,6 @@ public class Output extends Canvas {
     private static final Color c8 = new Color(0, 42, 58);
     private static final Color c9 = new Color(53, 37, 54);
 
-
     private static int row, size, cSize = 30, margin = 10;
     private ArrayList<Vertex> vertices = new ArrayList<>();
     private HashMap<String, Integer> vToIndex = new HashMap<>();

@@ -26,9 +26,7 @@ public class People extends Vertex{
     }
 
     public People(String [] args)  {
-
-        // Todo: remove
-        if (Math.random() <0.5)
+        if (args[1].equals("مالوردی"))
             isSuspect = true;
 
         this.first_name = args[0];

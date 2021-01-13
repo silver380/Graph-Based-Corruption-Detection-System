@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class PhaseTwo {
-    public ArrayList<Vertex> susFinder(Graph graph){
+    public static ArrayList<Vertex> susFinder(Graph graph){
         ArrayList<Vertex> sus = new ArrayList<>();
         HashMap<String, Vertex> hashMap = graph.getHashMap();
         for(Vertex v : hashMap.values()) {
@@ -48,10 +48,8 @@ public class PhaseTwo {
                         }
                     }
                 }
-
             }
         }
         return sus;
     }
-
 }
