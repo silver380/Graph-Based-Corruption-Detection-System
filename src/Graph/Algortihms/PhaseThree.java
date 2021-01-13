@@ -6,13 +6,17 @@ import Graph.Graph;
 import Graph.Vertex.Accounts;
 import Graph.Vertex.People;
 import Graph.Vertex.Vertex;
-
 import java.util.*;
 
 public class PhaseThree {
-    public static void bfs(Accounts badman,Graph graph,ArrayList<People> badmanANDsus){
+    public static void bfs(Accounts badman,Graph graph,Set<People> badmanANDsus){
         Queue<Accounts> q = new LinkedList<>();
         HashMap<String, Vertex> hashMap = graph.getHashMap();
+        for(Edge e: badman.edges){
+            if(e instanceof Transactions){
+                ((Accounts) hashMap.get(e.getTo())).setVisitColor(0);
+            }
+        }
         badman.setVisitColor(1);
         q.add(badman);
         badman.setDepth(0);
@@ -37,8 +41,8 @@ public class PhaseThree {
             u.setVisitColor(2);
         }
     }
-    public static ArrayList<People> secondCheck(Graph graph){
-        ArrayList<People> badmanANDsus = new ArrayList<>();
+    public static Set<People> secondCheck(Graph graph){
+        Set<People> badmanANDsus = new HashSet<>();
         HashMap<String, Vertex> hashMap = graph.getHashMap();
         for(Vertex v: hashMap.values()){
             if(v instanceof Accounts && (((People) hashMap.get(((Accounts) v).getSsn())).getWork().equals("قاچاقچی"))){
