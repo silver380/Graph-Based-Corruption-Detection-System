@@ -5,6 +5,8 @@ public class Accounts extends Vertex {
     private String bank_name = "";
     private String account_id="";
     private String iban ="";
+    private int visitColor = 0;
+    private int depth =0;
 
     public Accounts() {
     }
@@ -47,6 +49,22 @@ public class Accounts extends Vertex {
 
     public String getAccount_id(){
         return this.account_id;
+    }
+
+    public int getVisitColor() {
+        return visitColor;
+    }
+
+    public void setVisitColor(int visitColor) {
+        this.visitColor = visitColor;
+    }
+
+    public int getDepth() {
+        return depth;
+    }
+
+    public void setDepth(int depth) {
+        this.depth = depth;
     }
 
     @Override

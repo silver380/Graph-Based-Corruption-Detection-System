@@ -17,8 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class PhaseTwo {
-    public static ArrayList<Vertex> susFinder(Graph graph){
-        ArrayList<Vertex> sus = new ArrayList<>();
+    public static void susFinder(Graph graph){
         HashMap<String, Vertex> hashMap = graph.getHashMap();
         for(Vertex v : hashMap.values()) {
             if (v instanceof People && (((People) v).getWork().equals("گمرک") || ((People) v).getWork().equals("سازمان بنادر"))) {
@@ -28,8 +27,7 @@ public class PhaseTwo {
                         LocalDate today = LocalDate.now();
                         LocalDate difference = e.date.plusYears(2);
                         if(difference.isAfter(today)){
-                            ((People) v).isSuspect=true;
-                            sus.add(v);
+                            ((People) v).isSuspect=1;
                             break;
                         }
                     }
@@ -40,8 +38,8 @@ public class PhaseTwo {
                                 LocalDate today = LocalDate.now();
                                 LocalDate difference = ec.date.plusYears(2);
                                 if (difference.isAfter(today)) {
-                                    ((People) v).isSuspect = true;
-                                    sus.add(v);
+                                    ((People) v).isSuspect = 1;
+
                                     break;
                                 }
                             }
@@ -50,6 +48,5 @@ public class PhaseTwo {
                 }
             }
         }
-        return sus;
     }
 }

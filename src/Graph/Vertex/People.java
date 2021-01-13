@@ -12,7 +12,7 @@ import java.util.Locale;
 
 public class People extends Vertex{
     //TODO: isSuspect must show a degree
-    public boolean isSuspect;
+    public int isSuspect=0;
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
     private String first_name = "";
     private String last_name = "";

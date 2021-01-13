@@ -157,7 +157,7 @@ public class Output extends Canvas {
         int extra = 0;
         XY t = getPos(index);
         if (vertex instanceof People) {
-            if (((People) vertex).isSuspect) {
+            if (((People) vertex).isSuspect==1) {
                 g.setColor(sus);
                 extra = 5;
             }
