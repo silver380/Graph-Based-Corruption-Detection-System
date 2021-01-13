@@ -28,7 +28,7 @@ public class PhaseThree {
                     if(v.getVisitColor()==0){
                         v.setVisitColor(1);
                         v.setDepth(u.getDepth()+1);
-                        if(v.getDepth()<=6){
+                        if(v.getDepth()<=5){
                             q.add(v);
                             if (((People) hashMap.get(v.getSsn())).isSuspect == 1) {
                                 ((People) hashMap.get(v.getSsn())).isSuspect = 2;
