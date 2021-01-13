@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,6 +34,7 @@ public class Output extends Canvas {
 
     private boolean isVertexSelected = false;
     private Vertex selectedVertex = null;
+    private static JFrame frame;
 
     {
         addMouseListener(new MouseListener() {
@@ -81,7 +83,11 @@ public class Output extends Canvas {
     }
 
     public static void draw(Graph graph) {
-        JFrame frame = new JFrame("Graph");
+        if (frame != null)
+            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+
+
+        frame = new JFrame("Graph");
         Output canvas = new Output();
         canvas.vertices = graph.getVertices();
         for (int i = 0; i < canvas.vertices.size(); i++) {

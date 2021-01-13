@@ -26,9 +26,6 @@ public class People extends Vertex{
     }
 
     public People(String [] args)  {
-        if (args[1].equals("مالوردی"))
-            isSuspect = true;
-
         this.first_name = args[0];
         this.last_name = args[1];
         this.city = args[4];

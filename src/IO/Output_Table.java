@@ -1,10 +1,13 @@
 package IO;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import Graph.Algortihms.*;
 import Graph.Vertex.*;
 import Graph.*;
 import IO.Search.Trie;
@@ -12,23 +15,53 @@ import IO.Search.Trie;
 
 public class Output_Table {
     private static final String[] columns = {"ID", "Details"};
+    private static int phase = 1;
     private static Trie trie = new Trie();
     private static JFrame frame = new JFrame("Information");
     private static JTextField textField = new JTextField();
     private static Graph graph = new Graph();
+    private static JButton jButton;
+    private static boolean draw;
 
-    public static void show(Graph g) {
+    public static void show(Graph g, boolean drawGraph) {
+        draw = drawGraph;
+        frame.getContentPane().removeAll();
         graph = g;
         for(Vertex v : graph.getHashMap().values()) {
             trie.add(v.key);
         }
 
+        jButton = new JButton("Phase: " + phase + "." + (phase == 3 ? "" : " Click to continue."));
+        if (phase != 3)
+            jButton.addActionListener(actionListener);
         textField.setSize(300, 40);
         textField.getDocument().addDocumentListener(listener);
-        frame.add(textField, BorderLayout.NORTH);
 
+        frame.add(textField, BorderLayout.NORTH);
+        frame.add(jButton, BorderLayout.SOUTH);
         draw("");
+
+        if (phase == 1) {
+            drawTheGraph();
+        }
+        if (phase == 2) {
+            PhaseTwo.susFinder(graph);
+            drawTheGraph();
+        }
+        else if (phase == 3) {
+            // Todo: complete
+        }
     }
+
+    private static void drawTheGraph() {
+        if (draw)
+            Output.draw(graph);
+    }
+
+    static ActionListener actionListener = e -> {
+        phase++;
+        show(graph, draw);
+    };
 
     private static void draw(String search) {
         String[][] data;
@@ -72,13 +105,13 @@ public class Output_Table {
     static DocumentListener listener = new DocumentListener() {
         @Override
         public void insertUpdate(DocumentEvent e) {
-            frame.getContentPane().remove(1);
+            frame.getContentPane().remove(2);
             draw(textField.getText());
         }
 
         @Override
         public void removeUpdate(DocumentEvent e) {
-            frame.getContentPane().remove(1);
+            frame.getContentPane().remove(2);
             draw(textField.getText());
         }
 
