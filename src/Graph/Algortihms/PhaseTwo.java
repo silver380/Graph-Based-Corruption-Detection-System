@@ -26,7 +26,7 @@ public class PhaseTwo {
                     if ((e instanceof Ownerships)) {
                         LocalDate today = LocalDate.now();
                         LocalDate difference = e.date.plusYears(2);
-                        if(difference.isAfter(today)){
+                        if(difference.isAfter(today)||difference.isEqual(today)){
                             ((People) v).isSuspect=1;
                             break;
                         }
@@ -37,9 +37,8 @@ public class PhaseTwo {
                             if (hashMap.get(ec.to) instanceof Cars || hashMap.get(ec.to) instanceof Homes) {
                                 LocalDate today = LocalDate.now();
                                 LocalDate difference = ec.date.plusYears(2);
-                                if (difference.isAfter(today)) {
+                                if (difference.isAfter(today)||difference.isEqual(today)) {
                                     ((People) v).isSuspect = 1;
-
                                     break;
                                 }
                             }
