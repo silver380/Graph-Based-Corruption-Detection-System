@@ -23,10 +23,10 @@ public class Output extends Canvas {
     private static final Color c5 = new Color(191, 130, 191);
     private static final Color sus = new Color(214, 0, 45);
 
-    private static final Color c6 = new Color(52, 22, 5);
-    private static final Color c7 = new Color(23, 46, 0);
-    private static final Color c8 = new Color(0, 42, 58);
-    private static final Color c9 = new Color(53, 37, 54);
+    private static final Color c6 = new Color(84, 42, 80);
+    private static final Color c7 = new Color(20, 100, 59);
+    private static final Color c8 = new Color(0, 34, 68);
+    private static final Color c9 = new Color(110, 113, 113);
 
     private static int row, size, cSize = 30, margin = 10;
     private ArrayList<Vertex> vertices = new ArrayList<>();
@@ -63,8 +63,9 @@ public class Output extends Canvas {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                isVertexSelected = false;
-                repaint();
+                // Todo uncomment
+//                isVertexSelected = false;
+//                repaint();
             }
         });
     }
@@ -159,7 +160,15 @@ public class Output extends Canvas {
         if (vertex instanceof People) {
             if (((People) vertex).isSuspect==1) {
                 g.setColor(sus);
-                extra = 5;
+                extra = 4;
+            }
+            else if (((People) vertex).isSuspect==2) {
+                g.setColor(sus);
+                extra = 8;
+            }
+            else if (((People) vertex).isSuspect==3) {
+                g.setColor(sus);
+                extra = 12;
             }
             else
                 g.setColor(c5);

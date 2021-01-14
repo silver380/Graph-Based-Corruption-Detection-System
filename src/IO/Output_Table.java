@@ -31,9 +31,10 @@ public class Output_Table {
             trie.add(v.key);
         }
 
-        jButton = new JButton("Phase: " + phase + "." + (phase == 3 ? "" : " Click to continue."));
-        if (phase != 3)
+        jButton = new JButton("Phase: " + phase + "." + (phase == 4 ? "" : " Click to continue."));
+        if (phase != 4)
             jButton.addActionListener(actionListener);
+
         textField.setSize(300, 40);
         textField.getDocument().addDocumentListener(listener);
 
@@ -49,7 +50,11 @@ public class Output_Table {
             drawTheGraph();
         }
         else if (phase == 3) {
-            // Todo: complete
+            PhaseThree.secondCheck(graph);
+            drawTheGraph();
+        }
+        else if (phase == 4) {
+            // Todo complete
         }
     }
 
@@ -66,12 +71,13 @@ public class Output_Table {
     private static void draw(String search) {
         String[][] data;
 
-        if (search.equals("s")) {
+        if (search.equals("sus2") || search.equals("sus3") || search.equals("sus4")) {
             ArrayList<String> ids = new ArrayList<>();
             ArrayList<String> vals = new ArrayList<>();
 
+            int susValue = search.charAt(3) - '0' - 1;
             for(Vertex v : graph.getHashMap().values()) {
-                if (v instanceof People && ((People) v).isSuspect) {
+                if (v instanceof People && ((People) v).isSuspect == susValue) {
                     ids.add(v.key);
                     vals.add(v.toString());
                 }
