@@ -7,11 +7,12 @@ import Graph.Edge.Relationships;
 import Graph.Graph;
 import Graph.Vertex.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,21 +23,38 @@ public class Output extends Canvas {
     private static final Color c4 = new Color(86, 121, 168);
     private static final Color c5 = new Color(191, 130, 191);
     private static final Color sus = new Color(214, 0, 45);
+    private static final Color gh = new Color(20, 10, 20);
 
     private static final Color c6 = new Color(84, 42, 80);
     private static final Color c7 = new Color(20, 100, 59);
     private static final Color c8 = new Color(0, 34, 68);
     private static final Color c9 = new Color(110, 113, 113);
 
+    private static final File file = new File("");
+
     private static int row, size, cSize = 30, margin = 10;
     private ArrayList<Vertex> vertices = new ArrayList<>();
     private HashMap<String, Integer> vToIndex = new HashMap<>();
-
+    private static JButton jButton = new JButton("Guide");
+    private static JFrame frame;
     private boolean isVertexSelected = false;
     private Vertex selectedVertex = null;
-    private static JFrame frame;
+    private JFrame jFrame;
+
 
     {
+        jButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (jFrame == null)
+                    jFrame = new JFrame("Guide");
+                JLabel label = new JLabel(new ImageIcon(file.getAbsolutePath() + "\\Files\\Guide.jpg"));
+                jFrame.add(label);
+                jFrame.setSize(400, 400);
+                jFrame.pack();
+                jFrame.setVisible(true);
+            }
+        });
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -59,6 +77,7 @@ public class Output extends Canvas {
 
             @Override
             public void mouseEntered(MouseEvent e) {
+
             }
 
             @Override
@@ -79,14 +98,13 @@ public class Output extends Canvas {
         }
     }
 
-    public void showDialog(String text) {
+    private void showDialog(String text) {
         JOptionPane.showMessageDialog(null, text);
     }
 
     public static void draw(Graph graph) {
         if (frame != null)
             frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
-
 
         frame = new JFrame("Graph");
         Output canvas = new Output();
@@ -100,6 +118,7 @@ public class Output extends Canvas {
 
         canvas.setSize(size, size);
         frame.add(canvas);
+        frame.add(jButton, BorderLayout.SOUTH);
         frame.pack();
         frame.setVisible(true);
     }
@@ -158,7 +177,10 @@ public class Output extends Canvas {
         int extra = 0;
         XY t = getPos(index);
         if (vertex instanceof People) {
-            if (((People) vertex).isSuspect==1) {
+            if (((People) vertex).getWork().equals("قاچاقچی")) {
+                g.setColor(gh);
+            }
+            else if (((People) vertex).isSuspect==1) {
                 g.setColor(sus);
                 extra = 4;
             }
@@ -186,7 +208,10 @@ public class Output extends Canvas {
             g.setColor(c1);
         }
 
-        g.fillOval(t.x * cSize + margin - extra / 2, t.y * cSize + margin - extra / 2, cSize - margin * 2 + extra, cSize - margin * 2 + extra);
+        if (vertex instanceof People && ((People) vertex).getWork().equals("قاچاقچی"))
+            g.fillRect(t.x * cSize + margin - extra / 2, t.y * cSize + margin - extra / 2, cSize - margin * 2 + extra, cSize - margin * 2 + extra);
+        else
+            g.fillOval(t.x * cSize + margin - extra / 2, t.y * cSize + margin - extra / 2, cSize - margin * 2 + extra, cSize - margin * 2 + extra);
     }
 
     public XY getPos (int index) {

@@ -1,20 +1,19 @@
 package IO;
 
-import java.awt.event.ActionEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.DocumentEvent;
 import java.awt.event.ActionListener;
+import Graph.Algortihms.*;
+import IO.Search.Trie;
+import Graph.Vertex.*;
+import javax.swing.*;
 import java.util.*;
 import java.awt.*;
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import Graph.Algortihms.*;
-import Graph.Vertex.*;
 import Graph.*;
-import IO.Search.Trie;
 
 
 public class Output_Table {
-    private static final String[] columns = {"ID", "Details"};
+    private static final String[] columns = {"Number", "ID", "Details"};
     private static int phase = 1;
     private static Trie trie = new Trie();
     private static JFrame frame = new JFrame("Information");
@@ -83,28 +82,35 @@ public class Output_Table {
                 }
             }
 
-            data = new String[ids.size()][2];
+            data = new String[ids.size()][3];
             for (int i = 0; i < ids.size(); i++) {
-                data[i][0] = ids.get(i);
-                data[i][1] = vals.get(i);
+                data[i][0] = i + "";
+                data[i][1] = ids.get(i);
+                data[i][2] = vals.get(i);
             }
         }
         else {
             var list = trie.autoComplete(search);
             int size = list.size();
-            data = new String[size][2];
+            data = new String[size][3];
             for (int i = 0; i < size; i++) {
-                data[i][0] = list.get(i);
-                data[i][1] = graph.getHashMap().get(list.get(i)).toString();
+                data[i][0] = i + "";
+                data[i][1] = list.get(i);
+                data[i][2] = graph.getHashMap().get(list.get(i)).toString();
             }
         }
 
         JTable jTable = new JTable(data, columns);
+        jTable.getColumnModel().getColumn(0).setMinWidth(50);
+        jTable.getColumnModel().getColumn(1).setMinWidth(80);
+        jTable.getColumnModel().getColumn(2).setMinWidth(500);
+
         JScrollPane scrollPane = new JScrollPane(jTable);
 
         frame.add(scrollPane);
-        frame.setMinimumSize(new Dimension(300, 400));
         frame.pack();
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setMinimumSize(new Dimension(630, 400));
         frame.setVisible(true);
     }
 

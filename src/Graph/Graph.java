@@ -5,6 +5,8 @@ import java.util.*;
 
 public class Graph {
     private HashMap<String, Vertex> hashMap = new HashMap<>();
+    private ArrayList<Edge> calls = new ArrayList<>();
+
 //    private HashMap<String, String> IDtoIBan = new HashMap<>();
 
     public void addVertex(Vertex vertex) {
@@ -22,6 +24,9 @@ public class Graph {
 //        if (edge instanceof Transactions)
 //            from = IDtoIBan.get(edge.)
 //        TODO: transactions ...
+
+        if (edge instanceof Calls)
+            calls.add(edge);
 
         hashMap.get(edge.getFrom()).edges.add(edge);
     }

@@ -21,13 +21,13 @@ public class Input {
             System.out.println("Please choose " + '"' + filenames[current] + '"' + " file");
 
             if (fileChooser.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) {
-                System.out.println("Please choose the remaining files.(" + (all - current) + ") to go");
+                showDialog("Please choose the remaining files.(" + (all - current) + ") to go");
                 continue;
             }
 
             File file = fileChooser.getSelectedFile();
             if (!file.getName().equals(filenames[current])) {
-                System.out.println("Please choose the correct file.(" + filenames[current] + ")");
+                showDialog("Please choose the correct file.(" + filenames[current] + ")");
                 continue;
             }
 
@@ -72,11 +72,15 @@ public class Input {
                     }
                 }
             } catch (IOException e) {
-                System.out.println("CSV file is damaged.");
+                showDialog("CSV file is damaged.");
                 continue;
             }
 
             current++;
         }
+    }
+
+    private static void showDialog(String text) {
+        JOptionPane.showMessageDialog(null, text);
     }
 }
