@@ -6,6 +6,7 @@ import java.util.*;
 public class Graph {
     private HashMap<String, Vertex> hashMap = new HashMap<>();
     private ArrayList<Edge> calls = new ArrayList<>();
+    private Set<People> badmanANDsus = new HashSet<>();
 
 //    private HashMap<String, String> IDtoIBan = new HashMap<>();
 
@@ -47,4 +48,11 @@ public class Graph {
         return new ArrayList<>(hashMap.values());
     }
 
+    public Set<People> getBadmanANDsus() {
+        return badmanANDsus;
+    }
+
+    public void setBadmanANDsus(Set<People> badmanANDsus) {
+        this.badmanANDsus = badmanANDsus;
+    }
 }

@@ -9,7 +9,8 @@ import Graph.Vertex.Vertex;
 import java.util.*;
 
 public class PhaseThree {
-    public static void bfs(Accounts badman,Graph graph,Set<People> badmanANDsus){
+    //TODO: np need to call edges
+    public static void bfs(Accounts badman,Graph graph){
         Queue<Accounts> q = new LinkedList<>();
         HashMap<String, Vertex> hashMap = graph.getHashMap();
         for(Edge e: badman.edges){
@@ -17,6 +18,7 @@ public class PhaseThree {
                 ((Accounts) hashMap.get(e.getTo())).setVisitColor(Accounts.NOT_VISITED);
             }
         }
+        boolean badManPossibleCall = false;
         badman.setVisitColor(Accounts.VISITING);
         q.add(badman);
         badman.setDepth(0);
@@ -32,7 +34,7 @@ public class PhaseThree {
                             q.add(v);
                             if (((People) hashMap.get(v.getSsn())).isSuspect == People.SUS1) {
                                 ((People) hashMap.get(v.getSsn())).isSuspect = People.SUS2;
-                                badmanANDsus.add((People) hashMap.get(v.getSsn()));
+                                graph.getBadmanANDsus().add((People) hashMap.get(v.getSsn()));
                             }
                         }
                     }
@@ -41,14 +43,12 @@ public class PhaseThree {
             u.setVisitColor(Accounts.VISITED);
         }
     }
-    public static Set<People> secondCheck(Graph graph){
-        Set<People> badmanANDsus = new HashSet<>();
+    public static void secondCheck(Graph graph){
         HashMap<String, Vertex> hashMap = graph.getHashMap();
         for(Vertex v: hashMap.values()){
             if(v instanceof Accounts && (((People) hashMap.get(((Accounts) v).getSsn())).getWork().equals("قاچاقچی"))){
-                bfs((Accounts) v, graph, badmanANDsus);
+                bfs((Accounts) v, graph);
             }
         }
-        return badmanANDsus;
     }
 }
