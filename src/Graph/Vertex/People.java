@@ -13,7 +13,11 @@ import java.util.Locale;
 public class People extends Vertex{
     //TODO: isSuspect must show a degree
     //TODO: isSuspect way of usage must be changed
-    public int isSuspect=0;
+    public static final int NOTSUS=0;
+    public static final int SUS1=1;
+    public static final int SUS2=2;
+    public static final int SUS3=3;
+    public int isSuspect=NOTSUS;
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
     private String first_name = "";
     private String last_name = "";
@@ -21,7 +25,7 @@ public class People extends Vertex{
     private String work = "";
     private String ssn ="";
     private LocalDate birthday;
-
+    private boolean susOwnership = false;
     public People(){
 
     }
@@ -76,6 +80,14 @@ public class People extends Vertex{
 
     public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
+    }
+
+    public boolean isSusOwnership() {
+        return susOwnership;
+    }
+
+    public void setSusOwnership(boolean susOwnership) {
+        this.susOwnership = susOwnership;
     }
 
     @Override

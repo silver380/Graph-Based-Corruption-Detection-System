@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/secret-garden.iml" filepath="$PROJECT_DIR$/.idea/secret-garden.iml" />
+      <module fileurl="file://$PROJECT_DIR$/secret-garden.iml" filepath="$PROJECT_DIR$/secret-garden.iml" />
     </modules>
   </component>
 </project>
