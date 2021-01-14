@@ -31,6 +31,10 @@ public class Graph {
         hashMap.get(edge.getFrom()).edges.add(edge);
     }
 
+    public ArrayList<Edge> getCalls() {
+        return calls;
+    }
+
     public int getSize() {
         return hashMap.size();
     }

@@ -21,11 +21,12 @@ public class People extends Vertex{
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
     private String first_name = "";
     private String last_name = "";
-    private String city ="";
+    private String city = "";
     private String work = "";
-    private String ssn ="";
+    private String ssn = "";
     private LocalDate birthday;
     private boolean susOwnership = false;
+    private boolean susCall = false;
     public People(){
 
     }
@@ -88,6 +89,14 @@ public class People extends Vertex{
 
     public void setSusOwnership(boolean susOwnership) {
         this.susOwnership = susOwnership;
+    }
+
+    public boolean isSusCall() {
+        return susCall;
+    }
+
+    public void setSusCall(boolean susCall) {
+        this.susCall = susCall;
     }
 
     @Override
