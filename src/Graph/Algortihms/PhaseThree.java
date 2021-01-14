@@ -46,7 +46,6 @@ public class PhaseThree {
         HashMap<String, Vertex> hashMap = graph.getHashMap();
         for(Vertex v: hashMap.values()){
             if(v instanceof Accounts && (((People) hashMap.get(((Accounts) v).getSsn())).getWork().equals("قاچاقچی"))){
-                badmanANDsus.add((People) hashMap.get(((Accounts) v).getSsn()));
                 bfs((Accounts) v, graph, badmanANDsus);
             }
         }
