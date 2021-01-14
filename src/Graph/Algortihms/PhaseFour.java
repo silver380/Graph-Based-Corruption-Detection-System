@@ -13,7 +13,9 @@ public class PhaseFour {
             Phones v = (Phones) graph.getHashMap().get(c.getFrom());
             if (((People) graph.getHashMap().get(v.getSsn())).getWork().equals("قاچاقچی")){
                 Phones vTo = ((Phones) graph.getHashMap().get(c.getTo()));
-                ((People) graph.getHashMap().get(v.getSsn())).setSusCall(true);
+                if(!((People) graph.getHashMap().get(v.getSsn())).isSusCall()) {
+                    ((People) graph.getHashMap().get(v.getSsn())).setSusCall(true);
+                }
             }
         }
     }
