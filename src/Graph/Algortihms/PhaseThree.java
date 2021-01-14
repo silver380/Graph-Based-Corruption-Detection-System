@@ -14,10 +14,10 @@ public class PhaseThree {
         HashMap<String, Vertex> hashMap = graph.getHashMap();
         for(Edge e: badman.edges){
             if(e instanceof Transactions){
-                ((Accounts) hashMap.get(e.getTo())).setVisitColor(0);
+                ((Accounts) hashMap.get(e.getTo())).setVisitColor(Accounts.NOT_VISITED);
             }
         }
-        badman.setVisitColor(1);
+        badman.setVisitColor(Accounts.VISITING);
         q.add(badman);
         badman.setDepth(0);
         while(!q.isEmpty()){
@@ -25,20 +25,20 @@ public class PhaseThree {
             for(Edge e: u.edges){
                 if(e instanceof Transactions){
                     Accounts  v= ((Accounts) hashMap.get(e.getTo()));
-                    if(v.getVisitColor()==0){
-                        v.setVisitColor(1);
+                    if(v.getVisitColor()==Accounts.NOT_VISITED){
+                        v.setVisitColor(Accounts.VISITING);
                         v.setDepth(u.getDepth()+1);
                         if(v.getDepth()<=5){
                             q.add(v);
-                            if (((People) hashMap.get(v.getSsn())).isSuspect == 1) {
-                                ((People) hashMap.get(v.getSsn())).isSuspect = 2;
+                            if (((People) hashMap.get(v.getSsn())).isSuspect == People.SUS1) {
+                                ((People) hashMap.get(v.getSsn())).isSuspect = People.SUS2;
                                 badmanANDsus.add((People) hashMap.get(v.getSsn()));
                             }
                         }
                     }
                 }
             }
-            u.setVisitColor(2);
+            u.setVisitColor(Accounts.VISITED);
         }
     }
     public static Set<People> secondCheck(Graph graph){
@@ -46,7 +46,6 @@ public class PhaseThree {
         HashMap<String, Vertex> hashMap = graph.getHashMap();
         for(Vertex v: hashMap.values()){
             if(v instanceof Accounts && (((People) hashMap.get(((Accounts) v).getSsn())).getWork().equals("قاچاقچی"))){
-                badmanANDsus.add((People) hashMap.get(((Accounts) v).getSsn()));
                 bfs((Accounts) v, graph, badmanANDsus);
             }
         }

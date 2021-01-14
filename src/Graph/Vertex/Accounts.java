@@ -1,11 +1,14 @@
 package Graph.Vertex;
 
 public class Accounts extends Vertex {
+    public static final int NOT_VISITED = 0;
+    public static final int VISITING = 1;
+    public static final int VISITED = 2;
     private String ssn ="";
     private String bank_name = "";
     private String account_id="";
     private String iban ="";
-    private int visitColor = 0;
+    private int visitColor = NOT_VISITED;
     private int depth =0;
 
     public Accounts() {
