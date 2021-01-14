@@ -20,6 +20,10 @@ public class PhaseFour {
 
     public static void thirdCheck (Graph graph){
         susCallFinder(graph);
-
+        for (People p : graph.getBadmanANDsus()) {
+            if(p.isSusCall()){
+                p.isSuspect = People.SUS3;
+            }
+        }
     }
 }
