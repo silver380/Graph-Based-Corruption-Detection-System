@@ -18,7 +18,6 @@ public class PhaseThree {
                 ((Accounts) hashMap.get(e.getTo())).setVisitColor(Accounts.NOT_VISITED);
             }
         }
-        boolean badManPossibleCall = false;
         badman.setVisitColor(Accounts.VISITING);
         q.add(badman);
         badman.setDepth(0);

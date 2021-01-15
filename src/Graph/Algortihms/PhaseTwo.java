@@ -15,14 +15,17 @@ import java.util.List;
 
 public class PhaseTwo {
     public static void FindSusOwnerships(Graph graph) {
+        //TODO: make it like calls ?
         for(Vertex v: graph.getHashMap().values()){
-            for(Edge e: v.edges){
-                if(e instanceof Ownerships){
-                    LocalDate today = LocalDate.now();
-                    LocalDate difference = e.date.plusYears(2);
-                    if(difference.isAfter(today)||difference.isEqual(today)){
-                        ((People) v).setSusOwnership(true);
-                        break;
+            if(v instanceof People) {
+                for (Edge e : v.edges) {
+                    if (e instanceof Ownerships) {
+                        LocalDate today = LocalDate.now();
+                        LocalDate difference = e.date.plusYears(2);
+                        if (difference.isAfter(today) || difference.isEqual(today)) {
+                            ((People) v).setSusOwnership(People.SUSOWNERSHIP);
+                            break;
+                        }
                     }
                 }
             }

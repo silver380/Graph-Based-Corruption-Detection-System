@@ -10,16 +10,20 @@ import Graph.Vertex.Phones;
 public class PhaseFour {
     public static void susCallFinder (Graph graph){
         for (Edge c : graph.getCalls()) {
-            Phones v = (Phones) graph.getHashMap().get(c.getFrom());
-            if (((People) graph.getHashMap().get(v.getSsn())).getWork().equals("قاچاقچی")){
-                Phones vTo = ((Phones) graph.getHashMap().get(c.getTo()));
-                if(!((People) graph.getHashMap().get(v.getSsn())).isSusCall()) {
-                    ((People) graph.getHashMap().get(v.getSsn())).setSusCall(true);
+            Phones vFrom = (Phones) graph.getHashMap().get(c.getFrom());
+            Phones vTo = ((Phones) graph.getHashMap().get(c.getTo()));
+            if (((People) graph.getHashMap().get(vFrom.getSsn())).getWork().equals("قاچاقچی")){
+                if(!((People) graph.getHashMap().get(vTo.getSsn())).isSusCall()) {
+                    ((People) graph.getHashMap().get(vTo.getSsn())).setSusCall(People.SUSCCALL);
+                }
+            }
+            else if(((People) graph.getHashMap().get(vTo.getSsn())).getWork().equals("قاچاقچی")){
+                if(!((People) graph.getHashMap().get(vFrom.getSsn())).isSusCall()) {
+                    ((People) graph.getHashMap().get(vFrom.getSsn())).setSusCall(People.SUSCCALL);
                 }
             }
         }
     }
-
     public static void thirdCheck (Graph graph){
         susCallFinder(graph);
         for (People p : graph.getBadmanANDsus()) {
