@@ -6,7 +6,7 @@ import java.util.*;
 public class Graph {
     private HashMap<String, Vertex> hashMap = new HashMap<>();
     private ArrayList<Edge> calls = new ArrayList<>();
-    private Set<People> badmanANDsus = new HashSet<>();
+    private ArrayList<People> badmanANDsus = new ArrayList<>();
     private ArrayList<Edge> ownerships = new ArrayList<>();
 
 //    private HashMap<String, String> IDtoIBan = new HashMap<>();
@@ -52,7 +52,7 @@ public class Graph {
         return new ArrayList<>(hashMap.values());
     }
 
-    public Set<People> getBadmanANDsus() {
+    public ArrayList<People> getBadmanANDsus() {
         return badmanANDsus;
     }
 
@@ -60,7 +60,7 @@ public class Graph {
         return ownerships;
     }
 
-    public void setBadmanANDsus(Set<People> badmanANDsus) {
+    public void setBadmanANDsus(ArrayList<People> badmanANDsus) {
         this.badmanANDsus = badmanANDsus;
     }
 }
