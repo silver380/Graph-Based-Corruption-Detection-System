@@ -11,8 +11,6 @@ import java.util.Date;
 import java.util.Locale;
 
 public class People extends Vertex{
-    //TODO: isSuspect must show a degree
-    //TODO: isSuspect way of usage must be changed
     public static final int NOTSUS=0;
     public static final int SUS1=1;
     public static final int SUS2=2;

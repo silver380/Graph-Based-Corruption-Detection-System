@@ -7,6 +7,7 @@ public class Graph {
     private HashMap<String, Vertex> hashMap = new HashMap<>();
     private ArrayList<Edge> calls = new ArrayList<>();
     private Set<People> badmanANDsus = new HashSet<>();
+    private ArrayList<Edge> ownerships = new ArrayList<>();
 
 //    private HashMap<String, String> IDtoIBan = new HashMap<>();
 
@@ -26,9 +27,12 @@ public class Graph {
 //            from = IDtoIBan.get(edge.)
 //        TODO: transactions ...
 
-        if (edge instanceof Calls)
+        if (edge instanceof Calls) {
             calls.add(edge);
-
+        }
+        if(edge instanceof Ownerships) {
+            ownerships.add(edge);
+        }
         hashMap.get(edge.getFrom()).edges.add(edge);
     }
 
@@ -50,6 +54,10 @@ public class Graph {
 
     public Set<People> getBadmanANDsus() {
         return badmanANDsus;
+    }
+
+    public ArrayList<Edge> getOwnerships() {
+        return ownerships;
     }
 
     public void setBadmanANDsus(Set<People> badmanANDsus) {
