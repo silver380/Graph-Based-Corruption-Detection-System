@@ -6,7 +6,6 @@ import Graph.Graph;
 import Graph.Vertex.Accounts;
 import Graph.Vertex.People;
 import Graph.Vertex.Phones;
-
 public class PhaseFour {
     public static void susCallFinder (Graph graph){
         for (Edge c : graph.getCalls()) {

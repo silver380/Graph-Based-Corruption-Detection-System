@@ -12,7 +12,7 @@ public class Graph {
 //    private HashMap<String, String> IDtoIBan = new HashMap<>();
 
     public void addVertex(Vertex vertex) {
-        System.out.println(vertex.key);
+       // System.out.println(vertex.key);
         hashMap.put(vertex.key, vertex);
 
 //        if (vertex instanceof Accounts) {
@@ -21,7 +21,7 @@ public class Graph {
     }
 
     public void addEdge(Edge edge) {
-        System.out.println(edge.edgeKey);
+       // System.out.println(edge.edgeKey);
 //        String from;
 //        if (edge instanceof Transactions)
 //            from = IDtoIBan.get(edge.)

@@ -29,7 +29,6 @@ public class Output_Table {
         for(Vertex v : graph.getHashMap().values()) {
             trie.add(v.key);
         }
-
         jButton = new JButton("Phase: " + phase + "." + (phase == 4 ? "" : " Click to continue."));
         if (phase != 4)
             jButton.addActionListener(actionListener);
@@ -39,6 +38,7 @@ public class Output_Table {
 
         frame.add(textField, BorderLayout.NORTH);
         frame.add(jButton, BorderLayout.SOUTH);
+        System.out.println("we are here\n");
         draw("");
 
         if (phase == 1) {

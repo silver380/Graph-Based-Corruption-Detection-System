@@ -1,35 +1,16 @@
 package Graph.Algortihms;
 
 import Graph.Edge.Edge;
-import Graph.Edge.Ownerships;
 import Graph.Edge.Relationships;
 import Graph.Graph;
-import Graph.Vertex.*;
+import Graph.Vertex.People;
+import Graph.Vertex.Vertex;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 public class PhaseTwo {
     public static void FindSusOwnerships(Graph graph) {
-        //TODO: make it like calls ?
-//        for(Vertex v: graph.getHashMap().values()){
-//            if(v instanceof People) {
-//                for (Edge e : v.edges) {
-//                    if (e instanceof Ownerships) {
-//                        LocalDate today = LocalDate.now();
-//                        LocalDate difference = e.date.plusYears(2);
-//                        if (difference.isAfter(today) || difference.isEqual(today)) {
-//                            ((People) v).setSusOwnership(People.SUSOWNERSHIP);
-//                            break;
-//                        }
-//                    }
-//                }
-//            }
-//        }
         for (Edge o : graph.getOwnerships()) {
             LocalDate today = LocalDate.now();
             LocalDate difference = o.date.plusYears(2);
