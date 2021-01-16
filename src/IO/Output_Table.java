@@ -38,7 +38,7 @@ public class Output_Table {
 
         frame.add(textField, BorderLayout.NORTH);
         frame.add(jButton, BorderLayout.SOUTH);
-        System.out.println("we are here\n");
+        System.out.println("we are here");
         draw("");
 
         if (phase == 1) {
@@ -92,6 +92,7 @@ public class Output_Table {
         }
         else {
             var list = trie.autoComplete(search);
+            System.out.println("babie mige ba ba");
             int size = list.size();
             data = new String[size][3];
             for (int i = 0; i < size; i++) {
@@ -100,7 +101,7 @@ public class Output_Table {
                 data[i][2] = graph.getHashMap().get(list.get(i)).toString();
             }
         }
-
+        System.out.println("the jtable is playing with us");
         JTable jTable = new JTable(data, columns);
         jTable.getColumnModel().getColumn(0).setMinWidth(50);
         jTable.getColumnModel().getColumn(1).setMinWidth(80);
