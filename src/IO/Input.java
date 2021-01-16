@@ -3,6 +3,7 @@ import Graph.*;
 import Graph.Vertex.*;
 import Graph.Edge.*;
 
+import java.awt.event.WindowEvent;
 import java.util.*;
 import javax.swing.*;
 import java.io.*;
@@ -15,6 +16,14 @@ public class Input {
     public static void getInput(Graph graph) {
         int current = 0;
         int all = filenames.length;
+        JFrame jFrame = new JFrame("File's Order Guide");
+        File f1 = new File("");
+
+        JLabel label = new JLabel(new ImageIcon(f1.getAbsolutePath() + "\\Files\\Guide1.jpg"));
+        jFrame.add(label);
+        jFrame.setSize(400, 400);
+        jFrame.pack();
+        jFrame.setVisible(true);
 
         JFileChooser fileChooser = new JFileChooser();
         while (current != all) {
@@ -79,6 +88,7 @@ public class Input {
 
             current++;
         }
+        jFrame.dispatchEvent(new WindowEvent(jFrame, WindowEvent.WINDOW_CLOSING));
     }
 
     private static void showDialog(String text) {

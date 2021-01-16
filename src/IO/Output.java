@@ -96,7 +96,7 @@ public class Output extends Canvas {
             if (jFrame == null)
                 jFrame = new JFrame("Guide");
             else
-                jFrame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                jFrame.dispatchEvent(new WindowEvent(jFrame, WindowEvent.WINDOW_CLOSING));
 
             JLabel label = new JLabel(new ImageIcon(file.getAbsolutePath() + "\\Files\\Guide.jpg"));
             jFrame.add(label);
