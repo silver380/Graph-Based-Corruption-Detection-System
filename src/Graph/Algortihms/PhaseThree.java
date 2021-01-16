@@ -9,7 +9,6 @@ import Graph.Vertex.Vertex;
 import java.util.*;
 
 public class PhaseThree {
-    //TODO: np need to call edges
     public static void bfs(Accounts badman,Graph graph){
         Queue<Accounts> q = new LinkedList<>();
         HashMap<String, Vertex> hashMap = graph.getHashMap();
