@@ -35,30 +35,17 @@ public class Output extends Canvas {
     private static int row, size, cSize = 30, margin = 10;
     private ArrayList<Vertex> vertices = new ArrayList<>();
     private HashMap<String, Integer> vToIndex = new HashMap<>();
-    private static JButton jButton = new JButton("Guide");
+    private static JButton jButton;
     private static JFrame frame;
     private boolean isVertexSelected = false;
     private Vertex selectedVertex = null;
-    private JFrame jFrame;
+    private static JFrame jFrame;
 
 
     {
-        jButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (jFrame == null)
-                    jFrame = new JFrame("Guide");
-                JLabel label = new JLabel(new ImageIcon(file.getAbsolutePath() + "\\Files\\Guide.jpg"));
-                jFrame.add(label);
-                jFrame.setSize(400, 400);
-                jFrame.pack();
-                jFrame.setVisible(true);
-            }
-        });
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println(e.getX() / cSize  + " " + e.getY() / cSize);
                 isVertexSelected = true;
                 selectedVertex = vertices.get((e.getY() / cSize) * row + e.getX() / cSize);
                 repaint();
@@ -102,7 +89,30 @@ public class Output extends Canvas {
         JOptionPane.showMessageDialog(null, text);
     }
 
+    private static ActionListener actionListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println(jButton.getActionListeners().length);
+            System.out.println(e.getSource());
+            System.out.println(jFrame);
+
+            if (jFrame == null)
+                jFrame = new JFrame("Guide");
+            else
+                jFrame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+
+            JLabel label = new JLabel(new ImageIcon(file.getAbsolutePath() + "\\Files\\Guide.jpg"));
+            jFrame.add(label);
+            jFrame.setSize(400, 400);
+            jFrame.pack();
+            jFrame.setVisible(true);
+        }
+    };
+
     public static void draw(Graph graph) {
+        jButton = new JButton("Guide");
+        jButton.addActionListener(actionListener);
+
         if (frame != null)
             frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 
@@ -115,7 +125,6 @@ public class Output extends Canvas {
 
         row = ((int) Math.ceil(Math.sqrt(canvas.vertices.size())));
         size = row * cSize;
-
         canvas.setSize(size, size);
         frame.add(canvas);
         frame.add(jButton, BorderLayout.SOUTH);
@@ -208,7 +217,7 @@ public class Output extends Canvas {
             g.setColor(c1);
         }
 
-        if (vertex instanceof People && ((People) vertex).getWork().equals("قاچاقچی"))
+        if (vertex instanceof People && (((People) vertex).getWork().equals("قاچاقچی") || ((People) vertex).isSuspect == 3))
             g.fillRect(t.x * cSize + margin - extra / 2, t.y * cSize + margin - extra / 2, cSize - margin * 2 + extra, cSize - margin * 2 + extra);
         else
             g.fillOval(t.x * cSize + margin - extra / 2, t.y * cSize + margin - extra / 2, cSize - margin * 2 + extra, cSize - margin * 2 + extra);

@@ -53,7 +53,8 @@ public class Output_Table {
             drawTheGraph();
         }
         else if (phase == 4) {
-            // Todo complete
+            PhaseFour.thirdCheck(graph);
+            drawTheGraph();
         }
     }
 
