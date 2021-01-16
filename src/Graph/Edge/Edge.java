@@ -32,8 +32,4 @@ public abstract class Edge {
     public void setTo(String to) {
         this.to = to;
     }
-
-    public String getEdgeKey() {
-        return edgeKey;
-    }
 }

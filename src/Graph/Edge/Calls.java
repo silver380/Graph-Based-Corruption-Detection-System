@@ -1,9 +1,5 @@
 package Graph.Edge;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Calls extends Edge {
@@ -18,22 +14,5 @@ public class Calls extends Edge {
         this.date = LocalDate.parse(args[3],formatter);
         this.duration = args[4];
         this.setEdgeKey(call_id);
-    }
-
-
-    public String getCall_id() {
-        return call_id;
-    }
-
-    public void setCall_id(String call_id) {
-        this.call_id = call_id;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
     }
 }

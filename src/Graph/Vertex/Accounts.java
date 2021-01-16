@@ -11,9 +11,6 @@ public class Accounts extends Vertex {
     private int visitColor = NOT_VISITED;
     private int depth =0;
 
-    public Accounts() {
-    }
-
     public Accounts(String [] args) {
         this.ssn = args[0];
         this.bank_name = args[1];
@@ -22,36 +19,8 @@ public class Accounts extends Vertex {
         this.setKey(this.account_id);
     }
 
-    public String getIban() {
-        return iban;
-    }
-
     public String getSsn(){
         return this.ssn;
-    }
-
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
-    }
-
-    public void setBank_name(String bank_name) {
-        this.bank_name = bank_name;
-    }
-
-    public void setAccount_id(String account_id) {
-        this.account_id = account_id;
-    }
-
-    public void setIban(String iban) {
-        this.iban = iban;
-    }
-
-    public String getBank_name() {
-        return this.bank_name;
-    }
-
-    public String getAccount_id(){
-        return this.account_id;
     }
 
     public int getVisitColor() {

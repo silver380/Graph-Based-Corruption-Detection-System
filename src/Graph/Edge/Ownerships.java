@@ -20,19 +20,4 @@ public class Ownerships extends Edge {
         this.amount = args[4];
         this.setEdgeKey(ownerShip);
     }
-    public String getOwnerShip() {
-        return ownerShip;
-    }
-
-    public void setOwnerShip(String ownerShip) {
-        this.ownerShip = ownerShip;
-    }
-
-    public String getAmount() {
-        return amount;
-    }
-
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
 }

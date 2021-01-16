@@ -43,18 +43,6 @@ public class People extends Vertex{
         this.setKey(this.ssn);
     }
 
-    public String getSsn() {
-        return ssn;
-    }
-    public String getFirst_name(){
-        return this.first_name;
-    }
-    public String getLast_name(){
-        return this.last_name;
-    }
-    public String getCity(){
-        return this.city;
-    }
     public String getWork(){
         return this.work;
     }
@@ -95,6 +83,10 @@ public class People extends Vertex{
 
     public boolean isSusCall() {
         return susCall;
+    }
+
+    public String getSsn() {
+        return ssn;
     }
 
     public void setSusCall(boolean susCall) {

@@ -20,20 +20,4 @@ public class Transactions extends Edge{
         this.amount = args[4];
         this.setEdgeKey(Transaction_id);
     }
-
-    public String getTransaction_id() {
-        return Transaction_id;
-    }
-
-    public void setTransaction_id(String transaction_id) {
-        Transaction_id = transaction_id;
-    }
-
-    public String getAmount() {
-        return amount;
-    }
-
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
 }

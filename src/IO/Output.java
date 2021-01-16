@@ -6,13 +6,10 @@ import Graph.Edge.Ownerships;
 import Graph.Edge.Relationships;
 import Graph.Graph;
 import Graph.Vertex.*;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -120,7 +117,7 @@ public class Output extends Canvas {
         Output canvas = new Output();
         canvas.vertices = graph.getVertices();
         for (int i = 0; i < canvas.vertices.size(); i++) {
-            canvas.vToIndex.put(canvas.vertices.get(i).getKey(), i);
+            canvas.vToIndex.put(canvas.vertices.get(i).key, i);
         }
 
         row = ((int) Math.ceil(Math.sqrt(canvas.vertices.size())));
@@ -157,7 +154,7 @@ public class Output extends Canvas {
     }
 
     public void drawEdges(Graphics2D g, Vertex v) {
-        XY from = getPos(vToIndex.get(v.getKey()));
+        XY from = getPos(vToIndex.get(v.key));
         for (Edge edge : v.edges) {
             XY to = getPos(vToIndex.get(edge.to));
             Color color;

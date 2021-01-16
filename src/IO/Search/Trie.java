@@ -27,10 +27,6 @@ public class Trie {
         public Node[] getAllChildren () {
             return nodes.values().toArray(new Node[0]);
         }
-
-        public void removeChild (char ch) {
-            nodes.remove(ch);
-        }
     }
 
     private Node root = new Node(' ');

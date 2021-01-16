@@ -38,6 +38,7 @@ public class Input {
 
                 while (true) {
                     row = reader.readLine();
+
                     if (row == null)
                         break;
 
