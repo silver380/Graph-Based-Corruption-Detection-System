@@ -21,14 +21,17 @@ public class Output_Table {
     private static Graph graph = new Graph();
     private static JButton jButton;
     private static boolean draw;
+    private static JTable jTable;
 
     public static void show(Graph g, boolean drawGraph) {
         draw = drawGraph;
         frame.getContentPane().removeAll();
         graph = g;
-        for(Vertex v : graph.getHashMap().values()) {
-            trie.add(v.key);
-        }
+        if (phase == 1)
+            for(Vertex v : graph.getHashMap().values()) {
+                trie.add(v.key);
+            }
+
         jButton = new JButton("Phase: " + phase + "." + (phase == 4 ? "" : " Click to continue."));
         if (phase != 4)
             jButton.addActionListener(actionListener);
@@ -36,10 +39,20 @@ public class Output_Table {
         textField.setSize(300, 40);
         textField.getDocument().addDocumentListener(listener);
 
-        frame.add(textField, BorderLayout.NORTH);
-        frame.add(jButton, BorderLayout.SOUTH);
-       // System.out.println("we are here");
-        draw("");
+        System.out.println("we are here");
+
+        if (phase == 1) {
+            draw("");
+        }
+        else if (phase == 2) {
+            draw("");
+        }
+        else if (phase == 3) {
+            draw("sus3");
+        }
+        else {
+            draw("sus4");
+        }
 
         if (phase == 1) {
             drawTheGraph();
@@ -75,7 +88,16 @@ public class Output_Table {
     };
 
     private static void draw(String search) {
+        frame.getContentPane().removeAll();
+        frame.getContentPane().revalidate();
+        jTable = null;
+
+        System.gc();
+        System.out.println("removed");
+        System.out.println(Arrays.toString(frame.getComponents()));
         String[][] data;
+
+//        textField.setText(search + "");
 
         if (search.equals("sus2") || search.equals("sus3") || search.equals("sus4")) {
             ArrayList<String> ids = new ArrayList<>();
@@ -107,8 +129,9 @@ public class Output_Table {
                 data[i][2] = graph.getHashMap().get(list.get(i)).toString();
             }
         }
-        //System.out.println("the jtable is playing with us");
-        JTable jTable = new JTable(data, columns);
+        System.out.println("the jtable is playing with us");
+
+        jTable = new JTable(data, columns);
         jTable.getColumnModel().getColumn(0).setMinWidth(50);
         jTable.getColumnModel().getColumn(1).setMinWidth(80);
         jTable.getColumnModel().getColumn(2).setMinWidth(500);
@@ -116,22 +139,23 @@ public class Output_Table {
         JScrollPane scrollPane = new JScrollPane(jTable);
 
         frame.add(scrollPane);
+        frame.add(textField, BorderLayout.NORTH);
+        frame.add(jButton, BorderLayout.SOUTH);
         frame.pack();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(630, 400));
         frame.setVisible(true);
+        data = null;
     }
 
     static DocumentListener listener = new DocumentListener() {
         @Override
         public void insertUpdate(DocumentEvent e) {
-            frame.getContentPane().remove(2);
             draw(textField.getText());
         }
 
         @Override
         public void removeUpdate(DocumentEvent e) {
-            frame.getContentPane().remove(2);
             draw(textField.getText());
         }
 
