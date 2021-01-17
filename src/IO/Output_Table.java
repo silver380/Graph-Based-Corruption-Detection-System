@@ -7,6 +7,9 @@ import Graph.Algortihms.*;
 import IO.Search.Trie;
 import Graph.Vertex.*;
 import javax.swing.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.awt.*;
 import Graph.*;
@@ -61,19 +64,38 @@ public class Output_Table {
             System.out.println("Phase 2 is running...");
             PhaseTwo.susFinder(graph);
             System.out.println("Phase 2 result is ready");
+            write(1);
             drawTheGraph();
         }
         else if (phase == 3) {
             System.out.println("Phase 3 is running...");
             PhaseThree.secondCheck(graph);
             System.out.println("Phase 3 result is ready");
+            write(2);
             drawTheGraph();
         }
         else if (phase == 4) {
             System.out.println("Phase 4 is running...");
             PhaseFour.thirdCheck(graph);
             System.out.println("Phase 4 result is ready");
+            write(3);
             drawTheGraph();
+        }
+    }
+
+    private static void write(int s) {
+        try {
+            File file = new File("suspect" + (s + 1) + " .txt");
+            FileWriter myWriter = new FileWriter(file);
+            for (Vertex vertex : graph.getHashMap().values()) {
+                if (vertex instanceof People && ((People) vertex).isSuspect == s) {
+                    myWriter.write(vertex.toString() + "\n");
+                }
+            }
+            myWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
         }
     }
 
@@ -165,3 +187,4 @@ public class Output_Table {
         }
     };
 }
+
