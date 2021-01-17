@@ -9,7 +9,6 @@ public class Graph {
     private ArrayList<People> badmanANDsus = new ArrayList<>();
     private ArrayList<Edge> ownerships = new ArrayList<>();
 
-
     public void addVertex(Vertex vertex) {
         hashMap.put(vertex.key, vertex);
     }
@@ -21,6 +20,7 @@ public class Graph {
         if(edge instanceof Ownerships) {
             ownerships.add(edge);
         }
+
         hashMap.get(edge.getFrom()).edges.add(edge);
     }
 

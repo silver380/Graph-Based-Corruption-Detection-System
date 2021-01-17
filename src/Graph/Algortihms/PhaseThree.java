@@ -24,7 +24,7 @@ public class PhaseThree {
                     Accounts  v= ((Accounts) hashMap.get(e.getTo()));
                     if(v.getVisitColor()==Accounts.NOT_VISITED){
                         v.setDepth(u.getDepth()+1);
-                        if(v.getDepth()<=5){
+                        if(v.getDepth()<=5) {
                             v.setVisitColor(Accounts.VISITING);
                             q.add(v);
                             if (((People) hashMap.get(v.getSsn())).isSuspect == People.SUS1) {

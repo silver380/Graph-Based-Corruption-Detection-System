@@ -14,7 +14,6 @@ import java.util.*;
 import java.awt.*;
 import Graph.*;
 
-
 public class Output_Table {
     private static final String[] columns = {"Number", "ID", "Details"};
     private static int phase = 1;
@@ -41,6 +40,8 @@ public class Output_Table {
 
         textField.setSize(300, 40);
         textField.getDocument().addDocumentListener(listener);
+        frame.add(textField, BorderLayout.NORTH);
+        frame.add(jButton, BorderLayout.SOUTH);
 
         System.out.println("we are here");
 
@@ -51,10 +52,10 @@ public class Output_Table {
             draw("");
         }
         else if (phase == 3) {
-            draw("sus3");
+            draw("");
         }
         else {
-            draw("sus4");
+            draw("");
         }
 
         if (phase == 1) {
@@ -110,11 +111,7 @@ public class Output_Table {
     };
 
     private static void draw(String search) {
-        frame.getContentPane().removeAll();
-        frame.getContentPane().revalidate();
         jTable = null;
-
-        System.gc();
         System.out.println("removed");
         System.out.println(Arrays.toString(frame.getComponents()));
         String[][] data;
@@ -161,8 +158,6 @@ public class Output_Table {
         JScrollPane scrollPane = new JScrollPane(jTable);
 
         frame.add(scrollPane);
-        frame.add(textField, BorderLayout.NORTH);
-        frame.add(jButton, BorderLayout.SOUTH);
         frame.pack();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(630, 400));
@@ -173,11 +168,13 @@ public class Output_Table {
     static DocumentListener listener = new DocumentListener() {
         @Override
         public void insertUpdate(DocumentEvent e) {
+            frame.getContentPane().remove(2);
             draw(textField.getText());
         }
 
         @Override
         public void removeUpdate(DocumentEvent e) {
+            frame.getContentPane().remove(2);
             draw(textField.getText());
         }
 

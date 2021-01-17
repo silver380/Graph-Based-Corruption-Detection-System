@@ -19,13 +19,14 @@ public class Input {
         JFrame jFrame = new JFrame("File's Order Guide");
         File f1 = new File("");
 
-       // JLabel label = new JLabel(new ImageIcon(f1.getAbsolutePath() + "\\Files\\Guide1.jpg"));
-       // jFrame.add(label);
+        JLabel label = new JLabel(new ImageIcon(f1.getAbsolutePath() + "\\Files\\Guide1.jpg"));
+        jFrame.add(label);
         jFrame.setSize(400, 400);
         jFrame.pack();
         jFrame.setVisible(true);
 
         JFileChooser fileChooser = new JFileChooser();
+
         while (current != all) {
             System.out.println("Please choose " + '"' + filenames[current] + '"' + " file");
 
