@@ -45,15 +45,21 @@ public class Output_Table {
             drawTheGraph();
         }
         if (phase == 2) {
+            System.out.println("Phase 2 is running...");
             PhaseTwo.susFinder(graph);
+            System.out.println("Phase 2 result is ready");
             drawTheGraph();
         }
         else if (phase == 3) {
+            System.out.println("Phase 3 is running...");
             PhaseThree.secondCheck(graph);
+            System.out.println("Phase 3 result is ready");
             drawTheGraph();
         }
         else if (phase == 4) {
+            System.out.println("Phase 4 is running...");
             PhaseFour.thirdCheck(graph);
+            System.out.println("Phase 4 result is ready");
             drawTheGraph();
         }
     }
