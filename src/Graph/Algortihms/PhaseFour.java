@@ -13,12 +13,12 @@ public class PhaseFour {
             Phones vTo = ((Phones) graph.getHashMap().get(c.getTo()));
             if (((People) graph.getHashMap().get(vFrom.getSsn())).getWork().equals("قاچاقچی")){
                 if(!((People) graph.getHashMap().get(vTo.getSsn())).isSusCall()) {
-                    ((People) graph.getHashMap().get(vTo.getSsn())).setSusCall(People.SUSCCALL);
+                    ((People) graph.getHashMap().get(vTo.getSsn())).setSusCall(People.SUSCALL);
                 }
             }
             else if(((People) graph.getHashMap().get(vTo.getSsn())).getWork().equals("قاچاقچی")){
                 if(!((People) graph.getHashMap().get(vFrom.getSsn())).isSusCall()) {
-                    ((People) graph.getHashMap().get(vFrom.getSsn())).setSusCall(People.SUSCCALL);
+                    ((People) graph.getHashMap().get(vFrom.getSsn())).setSusCall(People.SUSCALL);
                 }
             }
         }
