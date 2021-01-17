@@ -12,9 +12,9 @@ public class PhaseThree {
     public static void bfs(Accounts badman,Graph graph){
         Queue<Accounts> q = new LinkedList<>();
         HashMap<String, Vertex> hashMap = graph.getHashMap();
-        for(Edge e: badman.edges){
-            if(e instanceof Transactions){
-                ((Accounts) hashMap.get(e.getTo())).setVisitColor(Accounts.NOT_VISITED);
+        for(Vertex v: hashMap.values()){
+            if(v instanceof Accounts){
+                ((Accounts) v).setVisitColor(Accounts.NOT_VISITED);
             }
         }
         badman.setVisitColor(Accounts.VISITING);
