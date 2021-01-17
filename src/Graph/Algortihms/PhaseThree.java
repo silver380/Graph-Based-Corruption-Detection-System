@@ -12,16 +12,13 @@ public class PhaseThree {
     public static void bfs(Accounts badman,Graph graph){
         Queue<Accounts> q = new LinkedList<>();
         HashMap<String, Vertex> hashMap = graph.getHashMap();
-        for(Vertex v: hashMap.values()){
-            if(v instanceof Accounts){
-                ((Accounts) v).setVisitColor(Accounts.NOT_VISITED);
-            }
-        }
+        ArrayList<Accounts> used = new ArrayList<>();
         badman.setVisitColor(Accounts.VISITING);
         q.add(badman);
         badman.setDepth(0);
         while(!q.isEmpty()){
             Accounts u = q.remove();
+            used.add(u);
             for(Edge e: u.edges){
                 if(e instanceof Transactions){
                     Accounts  v= ((Accounts) hashMap.get(e.getTo()));
@@ -39,6 +36,9 @@ public class PhaseThree {
                 }
             }
             u.setVisitColor(Accounts.VISITED);
+        }
+        for(Accounts u: used){
+            u.setVisitColor(Accounts.NOT_VISITED);
         }
     }
     public static void secondCheck(Graph graph){
