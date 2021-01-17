@@ -15,7 +15,7 @@ public class People extends Vertex{
     public static final int SUS1=1;
     public static final int SUS2=2;
     public static final int SUS3=3;
-    public static final boolean SUSCCALL = true;
+    public static final boolean SUSCALL = true;
     public static final boolean NOTSUSCALL = false;
     public static final boolean SUSOWNERSHIP= true;
     public static final boolean NOTSUSOWNERSHIP = false;
