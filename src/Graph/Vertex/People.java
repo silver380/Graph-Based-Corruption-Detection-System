@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -29,6 +30,7 @@ public class People extends Vertex{
     private LocalDate birthday;
     private boolean susOwnership = NOTSUSOWNERSHIP;
     private boolean susCall = NOTSUSCALL;
+    private ArrayList<Accounts> accounts = new ArrayList<>();
     public People(){
 
     }
@@ -91,6 +93,10 @@ public class People extends Vertex{
 
     public void setSusCall(boolean susCall) {
         this.susCall = susCall;
+    }
+
+    public ArrayList<Accounts> getAccounts() {
+        return accounts;
     }
 
     @Override
