@@ -37,6 +37,7 @@ public class Output extends Canvas {
     private boolean isVertexSelected = false;
     private Vertex selectedVertex = null;
     private static JFrame jFrame;
+    public static Graph graph2;
 
 
     {
@@ -107,6 +108,7 @@ public class Output extends Canvas {
     };
 
     public static void draw(Graph graph) {
+        graph2 = graph;
         jButton = new JButton("Guide");
         jButton.addActionListener(actionListener);
 
@@ -182,6 +184,32 @@ public class Output extends Canvas {
     public void drawCircle(Graphics2D g, Vertex vertex, int index) {
         int extra = 0;
         XY t = getPos(index);
+
+        if (vertex instanceof Accounts && ((People) graph2.getHashMap().get(((Accounts) vertex).getSsn())).getLast_name().equals("حامی")){
+            extra = 12;
+            g.setColor(new Color(255,255,0));
+            g.fillRect(t.x * cSize + margin - extra / 2, t.y * cSize + margin - extra / 2, cSize - margin * 2 + extra, cSize - margin * 2 + extra);
+            return;
+        }
+
+        if (vertex instanceof Accounts && ((People) graph2.getHashMap().get(((Accounts) vertex).getSsn())).getLast_name().equals("شایع")){
+            g.setColor(new Color(255,0,255));
+            extra = 12;
+            g.fillRect(t.x * cSize + margin - extra / 2, t.y * cSize + margin - extra / 2, cSize - margin * 2 + extra, cSize - margin * 2 + extra);
+            return;
+        }
+        if (vertex instanceof Accounts && ((People) graph2.getHashMap().get(((Accounts) vertex).getSsn())).getLast_name().equals("روحانی")){
+            g.setColor(new Color(0,0,255));
+            extra = 12;
+            g.fillRect(t.x * cSize + margin - extra / 2, t.y * cSize + margin - extra / 2, cSize - margin * 2 + extra, cSize - margin * 2 + extra);
+            return;
+        }
+        if (vertex instanceof Accounts && ((People) graph2.getHashMap().get(((Accounts) vertex).getSsn())).getLast_name().equals("سماوات")){
+            g.setColor(new Color(0,255,0));
+            extra = 12;
+            g.fillRect(t.x * cSize + margin - extra / 2, t.y * cSize + margin - extra / 2, cSize - margin * 2 + extra, cSize - margin * 2 + extra);
+            return;
+        }
         if (vertex instanceof People) {
             if (((People) vertex).getWork().equals("قاچاقچی")) {
                 g.setColor(gh);
@@ -219,6 +247,7 @@ public class Output extends Canvas {
         else
             g.fillOval(t.x * cSize + margin - extra / 2, t.y * cSize + margin - extra / 2, cSize - margin * 2 + extra, cSize - margin * 2 + extra);
     }
+
 
     public XY getPos (int index) {
         return new XY(index % row, index / row);

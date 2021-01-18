@@ -43,6 +43,10 @@ public class People extends Vertex{
         this.setKey(this.ssn);
     }
 
+    public String getLast_name() {
+        return last_name;
+    }
+
     public String getWork(){
         return this.work;
     }
