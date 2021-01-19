@@ -7,9 +7,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 public class People extends Vertex{
     public static final int NOTSUS=0;
@@ -20,7 +18,12 @@ public class People extends Vertex{
     public static final boolean NOTSUSCALL = false;
     public static final boolean SUSOWNERSHIP= true;
     public static final boolean NOTSUSOWNERSHIP = false;
+    public static final int NOT_VISITED = 0;
+    public static final int VISITING = 1;
+    public static final int VISITED = 2;
+    private int visitColor = NOT_VISITED;
     public int isSuspect=NOTSUS;
+    private int depth =0;
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
     private String first_name = "";
     private String last_name = "";
@@ -30,7 +33,7 @@ public class People extends Vertex{
     private LocalDate birthday;
     private boolean susOwnership = NOTSUSOWNERSHIP;
     private boolean susCall = NOTSUSCALL;
-    private ArrayList<Accounts> accounts = new ArrayList<>();
+    private Set<People> accounts = new HashSet<>();
     public People(){
 
     }
@@ -94,8 +97,22 @@ public class People extends Vertex{
     public void setSusCall(boolean susCall) {
         this.susCall = susCall;
     }
+    public int getVisitColor() {
+        return visitColor;
+    }
 
-    public ArrayList<Accounts> getAccounts() {
+    public void setVisitColor(int visitColor) {
+        this.visitColor = visitColor;
+    }
+    public int getDepth() {
+        return depth;
+    }
+
+    public void setDepth(int depth) {
+        this.depth = depth;
+    }
+
+    public Set<People> getAccounts() {
         return accounts;
     }
 

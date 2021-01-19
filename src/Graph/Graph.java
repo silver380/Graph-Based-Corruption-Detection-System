@@ -17,8 +17,13 @@ public class Graph {
         if (edge instanceof Calls) {
             calls.add(edge);
         }
-        if(edge instanceof Ownerships) {
+        else if(edge instanceof Ownerships) {
             ownerships.add(edge);
+        }
+        else if(edge  instanceof Transactions){
+            Accounts vFrom = ((Accounts) hashMap.get(edge.getFrom()));
+            Accounts vTo = ((Accounts) hashMap.get((edge.getTo())));
+            ((People) hashMap.get(vFrom.getSsn())).getAccounts().add(((People) hashMap.get(vTo.getSsn())));
         }
 
         hashMap.get(edge.getFrom()).edges.add(edge);
