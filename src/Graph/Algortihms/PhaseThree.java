@@ -9,13 +9,6 @@ import Graph.Vertex.Vertex;
 import java.util.*;
 
 public class PhaseThree {
-//    public static void addAccount(Graph graph){
-//        for(Vertex a:graph.getHashMap().values()){
-//            if(a instanceof Accounts){
-//                ((People) graph.getHashMap().get(((Accounts) a).getSsn())).getAccounts().add((Accounts) a);
-//            }
-//        }
-//    }
     public static void bfs(People badman,Graph graph){
         Queue<People> q = new LinkedList<>();
         HashMap<String, Vertex> hashMap = graph.getHashMap();
