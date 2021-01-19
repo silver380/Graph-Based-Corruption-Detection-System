@@ -13,9 +13,9 @@ public class PhaseThree {
         Queue<People> q = new LinkedList<>();
         HashMap<String, Vertex> hashMap = graph.getHashMap();
         ArrayList<People> used = new ArrayList<>();
-        badman.setDepth(0);
-        q.add(badman);
         badman.setVisitColor(People.VISITING);
+        q.add(badman);
+        badman.setDepth(0);
         while(!q.isEmpty()){
             People u = q.remove();
             used.add(u);
@@ -24,8 +24,8 @@ public class PhaseThree {
                         int depth = u.getDepth()+1;
                         if(depth<=5){
                             p.setDepth(depth);
-                            q.add(p);
                             p.setVisitColor(People.VISITING);
+                            q.add(p);
                             if(p.isSuspect==People.SUS1){
                                 p.isSuspect=People.SUS2;
                                 graph.getBadmanANDsus().add(p);
