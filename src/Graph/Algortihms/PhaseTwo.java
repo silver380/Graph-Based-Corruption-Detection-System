@@ -13,7 +13,7 @@ public class PhaseTwo {
     public static void FindSusOwnerships(Graph graph) {
         for (Edge o : graph.getOwnerships()) {
             LocalDate today = LocalDate.now();
-            LocalDate difference = o.date.plusYears(2);
+            LocalDate difference = o.date.plusYears(4);
             if (difference.isAfter(today) || difference.isEqual(today)) {
                 ((People) graph.getHashMap().get(o.getFrom())).setSusOwnership(People.SUSOWNERSHIP);
             }
